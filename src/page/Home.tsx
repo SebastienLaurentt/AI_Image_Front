@@ -18,7 +18,7 @@ const RenderCards: React.FC<{ data: Post[] | null; title: string }> = ({
   data,
   title,
 }) => {
-  if (data && data.length > 0) { // Ajouter une vérification sur `data`
+  if (data && data.length > 0) { 
     return data.map((post) => <Card key={post._id} {...post} />);
   }
 
