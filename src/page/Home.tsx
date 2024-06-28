@@ -42,7 +42,7 @@ const Home: React.FC<HomeProps> = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/v1/post",
+        "https://ai-image-dv9r.onrender.com/api/v1/post",
         {
           method: "GET",
           headers: {
