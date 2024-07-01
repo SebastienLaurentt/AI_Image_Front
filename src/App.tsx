@@ -1,9 +1,9 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-import logo from "./assets/logo.svg"
-import Home from "./page/Home";
+import logo from "./assets/logo.svg";
+import { Button } from "./components/ui/button";
 import CreatePost from "./page/CreatePost";
-
+import Home from "./page/Home";
 
 const App = () => (
   <BrowserRouter>
@@ -12,6 +12,7 @@ const App = () => (
         <img src={logo} alt="logo" className="w-28 object-contain" />
       </Link>
 
+      <Button>Click me</Button>
       <Link
         to="/create-post"
         className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md"
