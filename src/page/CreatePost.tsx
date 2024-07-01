@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import  preview  from '../assets/preview.png';
-import { getRandomPrompt } from '../utils';
-import FormField from '../components/FormField';
-import Loader from '../components/Loader';
+import preview from "../assets/preview.png";
+import FormField from "../components/FormField";
+import Loader from "../components/Loader";
+import { Button } from "../components/ui/button";
+import { getRandomPrompt } from "../utils";
 
 interface CreatePostProps {}
 
@@ -12,9 +13,9 @@ const CreatePost: React.FC<CreatePostProps> = () => {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    name: '',
-    prompt: '',
-    photo: '',
+    name: "",
+    prompt: "",
+    photo: "",
   });
 
   const [generatingImg, setGeneratingImg] = useState(false);
@@ -32,15 +33,18 @@ const CreatePost: React.FC<CreatePostProps> = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch('https://ai-image-dv9r.onrender.com/api/v1/dalle', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            prompt: form.prompt,
-          }),
-        });
+        const response = await fetch(
+          "https://ai-image-dv9r.onrender.com/api/v1/dalle",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prompt: form.prompt,
+            }),
+          }
+        );
 
         const data = await response.json();
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
@@ -50,7 +54,7 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         setGeneratingImg(false);
       }
     } else {
-      alert('Please provide proper prompt');
+      alert("Please provide proper prompt");
     }
   };
 
@@ -60,24 +64,27 @@ const CreatePost: React.FC<CreatePostProps> = () => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch('https://ai-image-dv9r.onrender.com/api/v1/post', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(form),
-        });
+        const response = await fetch(
+          "https://ai-image-dv9r.onrender.com/api/v1/post",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+          }
+        );
 
         await response.json();
-        alert('Success');
-        navigate('/');
+        alert("Success");
+        navigate("/");
       } catch (err) {
         alert(err);
       } finally {
         setLoading(false);
       }
     } else {
-      alert('Please generate an image with proper details');
+      alert("Please generate an image with proper details");
     }
   };
 
@@ -137,13 +144,9 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         </div>
 
         <div className="mt-5 flex gap-5">
-          <button
-            type="button"
-            onClick={generateImage}
-            className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-          >
-            {generatingImg ? 'Generating...' : 'Generate'}
-          </button>
+          <Button onClick={generateImage}>
+            {generatingImg ? "Generating..." : "Generate"}
+          </Button>
         </div>
 
         <div className="mt-10">
@@ -151,12 +154,9 @@ const CreatePost: React.FC<CreatePostProps> = () => {
             ** Once you have created the image you want, you can share it with
             others in the community **
           </p>
-          <button
-            type="submit"
-            className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-          >
-            {loading ? 'Sharing...' : 'Share with the Community'}
-          </button>
+          <Button variant="destructive">
+            {loading ? "Sharing..." : "Share with the Community"}
+          </Button>
         </div>
       </form>
     </section>
