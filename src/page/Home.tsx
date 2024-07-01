@@ -19,12 +19,20 @@ const RenderCards: React.FC<{ data: Post[] | null; title: string }> = ({
   data,
   title,
 }) => {
-  if (data && data.length > 0) {
-    return data.map((post) => <Card key={post._id} {...post} />);
+  if (!data || data.length === 0) {
+    return (
+      <div className="mt-4 flex justify-center items-center">
+        <div className="font-bold text-primary text-xl uppercase">{title}</div>
+      </div>
+    );
   }
 
   return (
-    <h2 className="mt-5 font-bold text-[#6469ff] text-xl uppercase">{title}</h2>
+    <div className="mt-4 grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+      {data.map((post) => (
+        <Card key={post._id} {...post} />
+      ))}
+    </div>
   );
 };
 
@@ -67,7 +75,9 @@ const Home: React.FC<HomeProps> = () => {
     fetchPosts();
   }, []);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleSearchChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const value = e.target.value;
     setSearchText(value);
 
@@ -98,7 +108,9 @@ const Home: React.FC<HomeProps> = () => {
             <Brush className="size-4 md:size-5" /> | Introducing PicassoAi
           </span>
         </AnimatedShinyText>
-        <h1 className="mt-3 playwrite">Create and Share Stunning AI-Generated Images.</h1>
+        <h1 className="mt-3 playwrite">
+          Create and Share Stunning AI-Generated Images.
+        </h1>
         <p className="mt-4 md:text-md mx-auto max-w-[550px]">
           Create beautiful visuals with DALL-E AI. Explore the gallery and
           showcase your imaginative artwork to the community.
@@ -127,21 +139,14 @@ const Home: React.FC<HomeProps> = () => {
         ) : (
           <>
             {searchText && (
-              <h2 className="font-medium text-[#666e75] text-xl mb-3">
-                Showing Results for{" "}
-                <span className="text-[#222328]">{searchText}</span>:
-              </h2>
+              <span className="text-md">
+                Showing Results for <span className="font-bold">{searchText}</span>:
+              </span>
             )}
-            <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
-              {searchText ? (
-                <RenderCards
-                  data={searchedResults}
-                  title="No Search Results Found"
-                />
-              ) : (
-                <RenderCards data={allPosts} title="No Posts Yet" />
-              )}
-            </div>
+            <RenderCards
+              data={searchText ? searchedResults : allPosts}
+              title={searchText ? "No Search Results Found" : "No Posts Yet"}
+            />
           </>
         )}
       </div>
