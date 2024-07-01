@@ -1,17 +1,17 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
+import { Brush } from "lucide-react";
 import { Button } from "./components/ui/button";
 import CreatePost from "./page/CreatePost";
 import Home from "./page/Home";
-import { Brush } from "lucide-react";
 
 const App = () => (
   <BrowserRouter>
-    <header className="w-full flex justify-between items-center bg-white sm:px-8 px-4 py-4 border-b border-b-[#e6ebf4]">
-      <div className="flex flex-row items-center gap-x-2">
-        <Brush  strokeWidth={3} />
+    <header className="max-w-7xl mx-auto w-full flex justify-between items-center bg-white  py-4 border-b border-b-[#e6ebf4]">
+      <Link to="/" className="flex flex-row items-center gap-x-1">
+        <Brush strokeWidth={3} />
         <span className="font-bold text-lg">PicassoAI</span>
-      </div>
+      </Link>
 
       <Button asChild>
         <Link to="/create-post">Create</Link>
@@ -23,10 +23,12 @@ const App = () => (
         <Route path="/create-post" element={<CreatePost />} />
       </Routes>
     </main>
-    <footer className="w-full bg-white sm:px-8 px-4 py-4 border-t border-b-[#e6ebf4]">
-      <p className="text-center text-[#666e75] text-sm">
-        © 2024 PicassoAI -  All rights reserved.
-      </p>
+    <footer className="flex flex-col gap-y-2 items-center w-full bg-white sm:px-8 px-4 py-4 border-t border-b-[#e6ebf4]">
+      <div className="text-xl uppercase font-bold flex flex-row items-center gap-x-1">
+        <Brush strokeWidth={3} />
+        <span>PicassoAI</span>
+      </div>
+      <p className="text-sm">© 2024 - All rights reserved.</p>
     </footer>
   </BrowserRouter>
 );
