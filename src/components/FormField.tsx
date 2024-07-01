@@ -1,4 +1,8 @@
 import React from 'react';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import { Button } from './ui/button';
+
 
 interface FormFieldProps {
   labelName: string;
@@ -23,24 +27,22 @@ const FormField: React.FC<FormFieldProps> = ({
 }) => (
   <div>
     <div className="flex items-center gap-2 mb-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-900">
+      <Label htmlFor={name} >
         {labelName}
-      </label>
+      </Label>
       {isSurpriseMe && (
-        <button
-          type="button"
+        <Button
           onClick={handleSurpriseMe}
-          className="font-semibold text-xs bg-[#EcECF1] py-1 px-2 rounded-[5px] text-black"
+          size="sm"
         >
           Surprise me
-        </button>
+        </Button>
       )}
     </div>
-    <input
+    <Input
       type={type}
       id={name}
       name={name}
-      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
