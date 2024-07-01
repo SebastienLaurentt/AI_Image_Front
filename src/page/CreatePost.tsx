@@ -56,14 +56,14 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         setGeneratingImg(false);
       }
     } else {
-      alert("Please provide proper prompt");
+      alert("Please provide a proper prompt");
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement >) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (form.prompt && form.photo) {
+    if (form.name && form.prompt && form.photo) {
       setLoading(true);
       try {
         const response = await fetch(
@@ -86,15 +86,15 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         setLoading(false);
       }
     } else {
-      alert("Please generate an image with proper details");
+      alert("Please provide a name and generate an image with proper details");
     }
   };
 
   return (
     <section className="max-w-7xl mx-auto flex flex-col items-center text-center mt-16 md:mt-24 px-2">
       <div className="flex flex-col items-center">
-        <h2>Create Your Own Art Quickly </h2>
-        <p className="max-w-[400px] mt-4" >
+        <h2>Create Your Own Art Quickly</h2>
+        <p className="max-w-[400px] mt-4">
           Generate an imaginative image through DALL-E AI and share it with the
           community
         </p>
@@ -147,7 +147,11 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         </div>
 
         <div className="mt-5 flex gap-5">
-          <Button onClick={generateImage}>
+          <Button
+            onClick={generateImage}
+            disabled={!form.prompt || generatingImg}
+
+          >
             {generatingImg ? "Generating..." : "Generate"}
           </Button>
         </div>
@@ -157,7 +161,11 @@ const CreatePost: React.FC<CreatePostProps> = () => {
             ** Once you have created the image you want, you can share it with
             others in the community **
           </p>
-          <Button variant="destructive" type="submit">
+          <Button
+            variant="destructive"
+            type="submit"
+            disabled={loading || !form.name || !form.photo}
+          >
             {loading ? "Sharing..." : "Share with the Community"}
           </Button>
         </div>
