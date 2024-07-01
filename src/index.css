@@ -34,6 +34,19 @@
       --ring: 221.2 83.2% 53.3%;
       --radius: 0.75rem;
     }
+  }
+
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    html {
+      @apply bg-background text-foreground;
+    }
   
+    h1 {
+      @apply text-xl md:text-4xl lg:text-5xl xl:text-6xl leading-[2rem] md:leading-[3rem] lg:leading-[4rem]  font-bold max-w-[850px];
+    }
+
   }
   

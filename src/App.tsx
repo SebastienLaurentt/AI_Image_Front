@@ -7,7 +7,7 @@ import Home from "./page/Home";
 
 const App = () => (
   <BrowserRouter>
-    <header className="max-w-7xl mx-auto w-full flex justify-between items-center bg-white  py-4 border-b border-b-[#e6ebf4]">
+    <header className="max-w-7xl px-4 mx-auto w-full flex justify-between items-center bg-white  py-4 border-b border-b-[#e6ebf4]">
       <Link to="/" className="flex flex-row items-center gap-x-1">
         <Brush strokeWidth={3} />
         <span className="font-bold text-lg">PicassoAI</span>
@@ -17,7 +17,7 @@ const App = () => (
         <Link to="/create-post">Create</Link>
       </Button>
     </header>
-    <main className="sm:p-8 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
+    <main className="sm:p-8 px-2 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create-post" element={<CreatePost />} />
