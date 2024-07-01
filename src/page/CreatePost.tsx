@@ -106,7 +106,7 @@ const CreatePost: React.FC<CreatePostProps> = () => {
             labelName="Your Name"
             type="text"
             name="name"
-            placeholder="Ex., john doe"
+            placeholder="John Doe"
             value={form.name}
             handleChange={handleChange}
           />
