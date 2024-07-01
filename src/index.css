@@ -41,12 +41,25 @@
       @apply border-border;
     }
     html {
-      @apply bg-background text-foreground;
+      @apply bg-background text-foreground playwrite 
+      ;
     }
   
     h1 {
-      @apply text-xl md:text-4xl lg:text-5xl xl:text-6xl leading-[2rem] md:leading-[3rem] lg:leading-[4rem]  font-bold max-w-[850px];
+      @apply text-lg md:text-3xl lg:text-5xl xl:text-6xl leading-[2.5rem] md:leading-[3.5rem] lg:leading-[4.5rem]  font-bold max-w-[950px];
     }
 
+    /* Custom Classes */
+    .playwrite {
+      font-family: "Playwrite US Modern", cursive;
+      font-optical-sizing: auto;
+      font-style: normal;
+    }
+
+    .yatra {
+      font-family: "Yatra One", system-ui;
+      font-weight: 400;
+      font-style: normal;
+    }
   }
   

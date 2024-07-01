@@ -98,19 +98,18 @@ const Home: React.FC<HomeProps> = () => {
             <Brush className="size-4 md:size-5" /> | Introducing PicassoAi
           </span>
         </AnimatedShinyText>
-        <h1 className="mt-2">Create and Share Stunning AI-Generated Images.</h1>
-        <p className="mt-3 md:text-md mx-auto max-w-[550px]">
+        <h1 className="mt-3">Create and Share Stunning AI-Generated Images.</h1>
+        <p className="mt-4 md:text-md mx-auto max-w-[550px]">
           Create beautiful visuals with DALL-E AI. Explore the gallery and
           showcase your imaginative artwork to the community.
         </p>
-        <Button asChild className="mt-3">
+        <Button asChild className="mt-4">
           <Link to="/create-post">Create Your Art</Link>
         </Button>
       </div>
 
       <div className="mt-16">
         <FormField
-          labelName="Search posts"
           type="text"
           name="text"
           placeholder="Search something..."

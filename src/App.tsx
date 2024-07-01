@@ -7,10 +7,10 @@ import Home from "./page/Home";
 
 const App = () => (
   <BrowserRouter>
-    <header className="max-w-7xl px-4 mx-auto w-full flex justify-between items-center bg-white  py-4 border-b border-b-[#e6ebf4]">
+    <header className="  max-w-7xl px-4 mx-auto w-full flex justify-between items-center bg-white  py-4 border-b border-b-[#e6ebf4]">
       <Link to="/" className="flex flex-row items-center gap-x-1">
         <Brush strokeWidth={3} />
-        <span className="font-bold text-lg">PicassoAI</span>
+        <span className="font-bold text-lg yatra">PicassoAI</span>
       </Link>
 
       <Button asChild>
@@ -24,10 +24,10 @@ const App = () => (
       </Routes>
     </main>
     <footer className="flex flex-col gap-y-2 items-center w-full bg-white sm:px-8 px-4 py-4 border-t border-b-[#e6ebf4]">
-      <div className="text-xl uppercase font-bold flex flex-row items-center gap-x-1">
+      <Link to="/" className="flex flex-row items-center gap-x-1">
         <Brush strokeWidth={3} />
-        <span>PicassoAI</span>
-      </div>
+        <span className="font-bold text-lg yatra">PicassoAI</span>
+      </Link>
       <p className="text-sm">© 2024 - All rights reserved.</p>
     </footer>
   </BrowserRouter>

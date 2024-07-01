@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 
 
 interface FormFieldProps {
-  labelName: string;
+  labelName?: string;
   type: string;
   name: string;
   placeholder: string;
