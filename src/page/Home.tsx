@@ -98,7 +98,7 @@ const Home: React.FC<HomeProps> = () => {
             <Brush className="size-4 md:size-5" /> | Introducing PicassoAi
           </span>
         </AnimatedShinyText>
-        <h1 className="mt-3">Create and Share Stunning AI-Generated Images.</h1>
+        <h1 className="mt-3 playwrite">Create and Share Stunning AI-Generated Images.</h1>
         <p className="mt-4 md:text-md mx-auto max-w-[550px]">
           Create beautiful visuals with DALL-E AI. Explore the gallery and
           showcase your imaginative artwork to the community.
@@ -109,6 +109,7 @@ const Home: React.FC<HomeProps> = () => {
       </div>
 
       <div className="mt-16">
+        <h2>The Community Showcase</h2>
         <FormField
           type="text"
           name="text"

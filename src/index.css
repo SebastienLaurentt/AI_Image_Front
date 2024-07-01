@@ -41,12 +41,16 @@
       @apply border-border;
     }
     html {
-      @apply bg-background text-foreground playwrite 
-      ;
+      @apply bg-background text-foreground;  
+      
     }
   
     h1 {
       @apply text-lg md:text-3xl lg:text-5xl xl:text-6xl leading-[2.5rem] md:leading-[3.5rem] lg:leading-[4.5rem]  font-bold max-w-[950px];
+    }
+
+    h2 {
+      @apply text-md md:text-2xl lg:text-3xl  leading-[2rem] md:leading-[3rem] lg:leading-[3.5rem] font-bold max-w-[260px] md:max-w-[350px] playwrite;
     }
 
     /* Custom Classes */

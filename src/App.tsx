@@ -7,7 +7,7 @@ import Home from "./page/Home";
 
 const App = () => (
   <BrowserRouter>
-    <header className="  max-w-7xl px-4 mx-auto w-full flex justify-between items-center bg-white  py-4 border-b border-b-[#e6ebf4]">
+    <header className="max-w-7xl px-4 mx-auto w-full flex justify-between items-center bg-white  py-4 border-b border-b-[#e6ebf4]">
       <Link to="/" className="flex flex-row items-center gap-x-1">
         <Brush strokeWidth={3} />
         <span className="font-bold text-lg yatra">PicassoAI</span>
