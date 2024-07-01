@@ -67,7 +67,7 @@ const Home: React.FC<HomeProps> = () => {
     fetchPosts();
   }, []);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = e.target.value;
     setSearchText(value);
 

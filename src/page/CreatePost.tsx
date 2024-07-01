@@ -21,8 +21,10 @@ const CreatePost: React.FC<CreatePostProps> = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
   const handleSurpriseMe = () => {
     const randomPrompt = getRandomPrompt(form.prompt);
@@ -58,7 +60,7 @@ const CreatePost: React.FC<CreatePostProps> = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement >) => {
     e.preventDefault();
 
     if (form.prompt && form.photo) {
@@ -89,10 +91,10 @@ const CreatePost: React.FC<CreatePostProps> = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto">
-      <div>
-        <h1 className="font-extrabold text-[#222328] text-[32px]">Create</h1>
-        <p className="mt-2 text-[#666e75] text-[14px] max-w-[500px]">
+    <section className="max-w-7xl mx-auto flex flex-col items-center text-center mt-16 md:mt-24 px-2">
+      <div className="flex flex-col items-center">
+        <h2>Create Your Own Art Quickly </h2>
+        <p className="max-w-[400px] mt-4" >
           Generate an imaginative image through DALL-E AI and share it with the
           community
         </p>
@@ -117,6 +119,7 @@ const CreatePost: React.FC<CreatePostProps> = () => {
             value={form.prompt}
             handleChange={handleChange}
             isSurpriseMe
+            isTextarea
             handleSurpriseMe={handleSurpriseMe}
           />
 
@@ -149,12 +152,12 @@ const CreatePost: React.FC<CreatePostProps> = () => {
           </Button>
         </div>
 
-        <div className="mt-10">
-          <p className="mt-2 text-[#666e75] text-[14px]">
+        <div className="mt-10 flex flex-col items-start">
+          <p className="my-2 text-[#666e75] text-[14px]">
             ** Once you have created the image you want, you can share it with
             others in the community **
           </p>
-          <Button variant="destructive">
+          <Button variant="destructive" type="submit">
             {loading ? "Sharing..." : "Share with the Community"}
           </Button>
         </div>

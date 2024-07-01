@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Button } from './ui/button';
-
+import { Textarea } from './ui/textarea';
 
 interface FormFieldProps {
   labelName?: string;
@@ -10,9 +10,10 @@ interface FormFieldProps {
   name: string;
   placeholder: string;
   value: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   isSurpriseMe?: boolean;
   handleSurpriseMe?: () => void;
+  isTextarea?: boolean;
 }
 
 const FormField: React.FC<FormFieldProps> = ({
@@ -24,10 +25,11 @@ const FormField: React.FC<FormFieldProps> = ({
   handleChange,
   isSurpriseMe,
   handleSurpriseMe,
+  isTextarea,
 }) => (
   <div>
     <div className="flex items-center gap-2 mb-2">
-      <Label htmlFor={name} >
+      <Label htmlFor={name}>
         {labelName}
       </Label>
       {isSurpriseMe && (
@@ -39,15 +41,26 @@ const FormField: React.FC<FormFieldProps> = ({
         </Button>
       )}
     </div>
-    <Input
-      type={type}
-      id={name}
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={handleChange}
-      required
-    />
+    {isTextarea ? (
+      <Textarea
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        required
+      />
+    ) : (
+      <Input
+        type={type}
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        required
+      />
+    )}
   </div>
 );
 
