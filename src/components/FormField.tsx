@@ -12,7 +12,7 @@ interface FormFieldProps {
   value: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   isSurpriseMe?: boolean;
-  handleSurpriseMe?: () => void;
+  handleSurpriseMe?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   isTextarea?: boolean;
 }
 
@@ -34,7 +34,11 @@ const FormField: React.FC<FormFieldProps> = ({
       </Label>
       {isSurpriseMe && (
         <Button
-          onClick={handleSurpriseMe}
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            handleSurpriseMe && handleSurpriseMe(e);
+          }}
           size="sm"
         >
           Surprise me

@@ -154,6 +154,8 @@ const CreatePost: React.FC<CreatePostProps> = () => {
           >
             {generatingImg ? "Generating..." : "Generate"}
           </Button>
+
+
         </div>
 
         <div className="mt-10 flex flex-col items-start">
