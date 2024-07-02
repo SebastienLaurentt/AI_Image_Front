@@ -5,6 +5,7 @@ import preview from "../assets/preview.png";
 import FormField from "../components/FormField";
 import Loader from "../components/Loader";
 import { Button } from "../components/ui/button";
+import { toast } from "../components/ui/use-toast";
 import { getRandomPrompt } from "../utils";
 
 interface CreatePostProps {}
@@ -21,7 +22,9 @@ const CreatePost: React.FC<CreatePostProps> = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
@@ -56,7 +59,10 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         setGeneratingImg(false);
       }
     } else {
-      alert("Please provide a proper prompt");
+      toast({
+        title: "Please provide a proper prompt",
+        variant: "destructive",
+      });
     }
   };
 
@@ -78,7 +84,7 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         );
 
         await response.json();
-        alert("Success");
+        toast({ title: "Shared successfully ! ", variant: "default" });
         navigate("/");
       } catch (err) {
         alert(err);
@@ -86,7 +92,11 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         setLoading(false);
       }
     } else {
-      alert("Please provide a name and generate an image with proper details");
+      toast({
+        title:
+          "Please provide a name and generate an image with proper details! ",
+        variant: "destructive",
+      });
     }
   };
 
@@ -150,12 +160,9 @@ const CreatePost: React.FC<CreatePostProps> = () => {
           <Button
             onClick={generateImage}
             disabled={!form.prompt || generatingImg}
-
           >
             {generatingImg ? "Generating..." : "Generate"}
           </Button>
-
-
         </div>
 
         <div className="mt-10 flex flex-col items-start">
